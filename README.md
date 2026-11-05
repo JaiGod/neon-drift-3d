@@ -25,6 +25,29 @@ Race down a glowing retro-future highway toward a striped synthwave sun. Drift b
 
 Everything you see and hear is generated in code: no images, no audio files, no 3D library, and no CDN. The whole game is a single `index.html`.
 
+## 📸 Screenshots
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/screenshots/title.jpg" alt="Neon Drift 3D title screen with the striped synthwave sun"></td>
+    <td width="50%"><img src="docs/screenshots/gameplay.jpg" alt="Gameplay: boosting down the neon highway with a x9 near-miss combo"></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Title screen</b> · live 3D menu behind the UI</td>
+    <td align="center"><b>Gameplay</b> · boost + near-miss combo</td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="docs/screenshots/garage.jpg" alt="Garage with six car colorways to unlock with coins"></td>
+    <td width="50%" align="center"><img src="docs/screenshots/mobile.jpg" alt="Mobile portrait gameplay at 390 px wide" width="200"></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Garage</b> · 5 unlockable colorways</td>
+    <td align="center"><b>Mobile</b> · swipe / tap controls (390×844)</td>
+  </tr>
+</table>
+
+> Screenshots were captured from the real game running in the browser.
+
 ## ✨ Features
 
 | | |
@@ -43,6 +66,30 @@ Everything you see and hear is generated in code: no images, no audio files, no 
 | 💾 **Saves** | Best score, daily best, coins, owned cars and sound setting in `localStorage` |
 | 📱 **Mobile ready** | Swipe or tap controls, safe-area aware HUD, no horizontal scroll at 390 px |
 | 🛟 **Fallback** | A friendly message if WebGL is unavailable |
+
+## 🔗 Links
+
+| | |
+|---|---|
+| ▶️ **Play in browser** | [jaigod.github.io/neon-drift-3d](https://jaigod.github.io/neon-drift-3d/) |
+| 📦 **Android APK** | [Latest release · NeonDrift3D.apk](https://github.com/JaiGod/neon-drift-3d/releases/latest) · [all releases](https://github.com/JaiGod/neon-drift-3d/releases) |
+| 🧠 **Game source** | [`index.html`](index.html) (renderer, game logic, audio and UI) |
+| ⚙️ **APK build workflow** | [`.github/workflows/android.yml`](.github/workflows/android.yml) · [Actions runs](https://github.com/JaiGod/neon-drift-3d/actions) |
+| 🖼️ **Screenshots folder** | [`docs/screenshots/`](docs/screenshots) |
+| 📄 **License** | [MIT](LICENSE) |
+| 🏢 **JaiGod org** | [github.com/JaiGod](https://github.com/JaiGod) |
+
+### 🎮 More JaiGod games
+
+- 🪐 [**Orbit Sling**](https://github.com/JaiGod/orbit-sling): [▶ play](https://jaigod.github.io/orbit-sling/)
+- 🔥 [**Ember Crypt**](https://github.com/JaiGod/ember-crypt)
+- 🛡️ [**Bulwark TDS**](https://github.com/JaiGod/bulwark-tds)
+- 🟢 [**Slimefall TD**](https://github.com/JaiGod/slimefall-td)
+- 🥷 [**Stickman Shadow Wars**](https://github.com/JaiGod/stickman-shadow-wars)
+- 🕯️ [**The Hollow Between**](https://github.com/JaiGod/the-hollow-between)
+- 🚀 [**Nova Vanguard**](https://github.com/JaiGod/nova-vanguard)
+- 🍩 [**Glaze & Grind**](https://github.com/JaiGod/glaze-and-grind)
+- 👉 [See every project in the JaiGod org](https://github.com/orgs/JaiGod/repositories)
 
 ## 🕹️ Controls
 
@@ -71,6 +118,7 @@ neon-drift-3d/
 ├── index.html                    # the entire game (renderer, game logic, audio, UI)
 ├── README.md
 ├── LICENSE                       # MIT
+├── docs/screenshots/             # README screenshots (title, gameplay, garage, mobile)
 └── .github/workflows/android.yml # Capacitor -> Gradle -> NeonDrift3D.apk on release v1.0.0
 ```
 
