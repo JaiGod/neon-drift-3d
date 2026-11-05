@@ -1,0 +1,69 @@
+name: Build Android APK
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Prepare Capacitor project
+        run: |
+          mkdir -p www
+          cp index.html www/
+          npm init -y
+          npm install @capacitor/core@6 @capacitor/cli@6 @capacitor/android@6
+          cat > capacitor.config.json <<'EOF'
+          {
+            "appId": "io.github.jaigod.neondrift3d",
+            "appName": "Neon Drift 3D",
+            "webDir": "www",
+            "android": { "backgroundColor": "#12042a" }
+          }
+          EOF
+          npx cap add android
+          npx cap sync android
+
+      - name: Lock portrait orientation
+        run: |
+          sed -i 's/android:configChanges="/android:screenOrientation="portrait" android:configChanges="/' android/app/src/main/AndroidManifest.xml || true
+
+      - name: Build debug APK
+        working-directory: android
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon
+          cp app/build/outputs/apk/debug/app-debug.apk ../NeonDrift3D.apk
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NeonDrift3D-apk
+          path: NeonDrift3D.apk
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.0
+          name: Neon Drift 3D v1.0.0
+          body: |
+            Android debug build of Neon Drift 3D, built automatically with Capacitor.
+            Install NeonDrift3D.apk on your phone (allow installs from unknown sources).
+            Play in your browser: https://jaigod.github.io/neon-drift-3d/
+          files: NeonDrift3D.apk
+          make_latest: true
